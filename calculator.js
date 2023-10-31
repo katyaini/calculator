@@ -15,10 +15,12 @@ function modulus(a,b){
 }
 
 
+
 var firstNumber = "";
 var secondNumber = "";
 var operator = "";
 var screenString="";
+var ops = "";
 
 
 function operate(a,b,c)
@@ -34,11 +36,13 @@ function operate(a,b,c)
     }
     if(c === "/") {
          return divide(a,b);
-    }
+        }
     if(c === "%"){
-        return modulus(a,b);
+       return modulus(a,b);
+        }
     }
-}
+    
+
 
 var newArray =[];
 var array =[];
@@ -78,36 +82,13 @@ equals.addEventListener("click", ()=>{
     
     for (let i = 0; i <= arr.length ; i++){
         
-         if (arr[i] === "*" || arr[i] === "-" || arr[i] === "+" ){
+         if (arr[i] === "*" || arr[i] === "-" || arr[i] === "+" || arr[i] === "/" || arr[i] === "%"){
              result =  operate(parseInt(arr[i-1]), parseInt(arr[i+1]), arr[i]); 
               arrayTobeSliced = arr.splice(0,3,result);
              i--;
              document.querySelector(".display").innerHTML = result;
              string=result;
           }
-
-          if (arr[i] === "/"){
-            if(arr[i+i] === "0"){
-                document.querySelector(".display").innerHTML= "Oops!";
-            }
-            else{
-                result = operate(parseInt(arr[i-1], parseInt(arr[i+1]),arr[i]))
-                i--;
-                document.querySelector(".display").innerHTML = result;
-                string=result;
-            }
-          } 
-          if (arr[i] === "%"){
-            if(arr[i+i] === "0"){
-                document.querySelector(".display").innerHTML= "Oops!";
-            }
-            else{
-                result = operate(parseInt(arr[i-1], parseInt(arr[i+1]),arr[i]))
-                i--;
-                document.querySelector(".display").innerHTML = result;
-                string=result;
-            }
-          }     
     }
     
 });
